@@ -4,5 +4,13 @@ from app.users.models import UserProfile
 
 
 def home(request):
-    
-    return render(request, "home.html", {})
+    context = {}
+    if str(request.user) != 'AnonymousUser':
+        user = request.user
+        user = UserProfile.objects.get(user=user)
+        context = {'user': user}
+    else:
+        user = "none"
+        context = {'user': user}
+
+    return render(request, "home.html", context)
