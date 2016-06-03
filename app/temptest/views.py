@@ -4,7 +4,5 @@ from app.users.models import UserProfile
 
 
 def home(request):
-    user = request.user
-    user = UserProfile.objects.get(user=user)
-    context = {'user': user}
-    return render(request, "home.html", context)
+    
+    return render(request, "home.html", {})
